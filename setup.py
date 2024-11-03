@@ -12,8 +12,7 @@ setup(
         ('share/ament_index/resource_index/packages',
             ['resource/' + package_name]),
         ('share/' + package_name, ['package.xml']),
-        ("share/" + package_name + "/launch/", ["launch/demo_minimal.launch.py"]),
-        ("share/" + package_name + "/launch/", ["launch/demo_minimal_only_ros.launch.py"]),
+        ("share/" + package_name + "/launch/", glob("launch/*.launch.py")),
         ("share/" + package_name + "/models/car/car_wheel/", glob("models/car/car_wheel/*")),
         ("share/" + package_name + "/models/car/car_body/", glob("models/car/car_body/*")),
         ("share/" + package_name + "/models/car/car_camera/", glob("models/car/car_camera/*")),
@@ -36,6 +35,8 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
+            'circle = demo_gazebo_ros_car_minimal.draw_circle:main',
+            'square = demo_gazebo_ros_car_minimal.draw_square:main',
         ],
     },
 )
